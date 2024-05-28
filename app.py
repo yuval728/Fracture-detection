@@ -7,8 +7,8 @@ from PIL import Image
 from fractureModel import FractureModel
 
 
-model=FractureModel(input_shape=3,output_shape=1,hidden_units=8).cpu()
-model.load_state_dict(torch.load('fracture-detection_model.pth'))
+model=FractureModel(input_shape=3,output_shape=1,hidden_units=8)
+model.load_state_dict(torch.load('fracture-detection_model.pth', map_location=torch.device('cpu')))
 
 image_transforms = torchvision.transforms.Compose([
     torchvision.transforms.Resize((224, 224)),
